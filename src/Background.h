@@ -1,21 +1,25 @@
 #ifndef __BACKGROUND_H__
 #define __BACKGROUND_H__
 
-#include "Screen.h"
+#include "Base.h"
 
-class Background
+class Background : public Base
 {
 public:
-static Background* create(Screen* screen)
+~Background();
+static Background* create(GlobalConfig* config, Screen* screen)
 {
-    return new Background(screen);
+    return new Background(config, screen);
 }
+virtual void update();
 
 protected:
-Background(Screen* screen);
+virtual bool createSWSurface();
+virtual bool createHWSurface();
 private:
-Screen* _screen;
+Background(GlobalConfig* config, Screen* screen);
 SDL_Surface* _surface;
+SDL_Texture* _texture;
 
 };
 

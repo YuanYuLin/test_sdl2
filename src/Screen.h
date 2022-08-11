@@ -2,27 +2,33 @@
 #define __SCREEN_H__
 
 #include <stdio.h>
-#include <sys/types.h>
+//#include <sys/types.h>
 #include <SDL.h>
 #include <SDL_image.h>
+#include "GlobalConfig.h"
 
+#define GLOBAL_IMAGE_DIR	"/home/userid/Downloads/sdl2/test_sdl2/src"
 class Screen
 {
 public:
-    static Screen* create()
+    ~Screen();
+    static Screen* create(GlobalConfig* config)
     {
-        return new Screen(1280, 720);
+        return new Screen(config);
     }
 
     bool createSurface();
     SDL_Surface* getSurface();
+    SDL_Renderer* getRenderer();
+    void clear();
+    void update();
 protected:
 private:
-    Screen(uint16_t width, uint16_t height);
-    uint16_t _width;
-    uint16_t _height;
+    Screen(GlobalConfig* config);
+    GlobalConfig* _config;
     SDL_Window* _window;
-    SDL_Surface* _screenSurface;
+    SDL_Surface* _surface;
+    SDL_Renderer* _renderer;
 };
 
 #endif
