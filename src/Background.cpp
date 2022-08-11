@@ -3,8 +3,8 @@
 
 #include "Background.h"
 
-#define IMAGE_SW_PATH GLOBAL_IMAGE_DIR "/images/background_sw.png"
-#define IMAGE_HW_PATH GLOBAL_IMAGE_DIR "/images/background_hw.png"
+#define IMAGE_SW_PATH GLOBAL_IMAGE_DIR "images/background_sw.png"
+#define IMAGE_HW_PATH GLOBAL_IMAGE_DIR "images/background_hw.png"
 
 Background::~Background()
 {

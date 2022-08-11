@@ -3,7 +3,7 @@
 
 #include "Sprite.h"
 
-#define IMAGE_PATH GLOBAL_IMAGE_DIR "/images/dots.png"
+#define IMAGE_PATH GLOBAL_IMAGE_DIR "images/dots.png"
 
 Sprite::~Sprite()
 {

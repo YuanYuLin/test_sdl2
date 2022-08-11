@@ -3,7 +3,7 @@
 
 #include "ColorKey.h"
 
-#define IMAGE_PATH GLOBAL_IMAGE_DIR "/images/foo.png"
+#define IMAGE_PATH GLOBAL_IMAGE_DIR "images/foo.png"
 
 ColorKey::~ColorKey()
 {

@@ -4,6 +4,8 @@
 #include "GlobalConfig.h"
 #include "Screen.h"
 
+#define GLOBAL_IMAGE_DIR ""
+
 class Base
 {
 public:

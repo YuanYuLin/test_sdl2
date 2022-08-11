@@ -7,7 +7,6 @@
 #include <SDL_image.h>
 #include "GlobalConfig.h"
 
-#define GLOBAL_IMAGE_DIR	"/home/userid/Downloads/sdl2/test_sdl2/src"
 class Screen
 {
 public:

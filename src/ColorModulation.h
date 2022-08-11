@@ -12,6 +12,7 @@ static ColorModulation* create(GlobalConfig* config, Screen* screen)
     return new ColorModulation(config, screen);
 }
 virtual void update();
+void setColorsMap(uint8_t num);
 
 protected:
 virtual bool createHWSurface();
@@ -23,6 +24,9 @@ int _x;
 int _y;
 int _width;
 int _height;
+uint8_t _red;
+uint8_t _green;
+uint8_t _blue;
 };
 
 #endif
