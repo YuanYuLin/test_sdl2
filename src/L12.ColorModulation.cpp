@@ -1,7 +1,7 @@
-#ifndef __COLORMODULATION_CPP__
-#define __COLORMODULATION_CPP__
+#ifndef __L12_COLORMODULATION_CPP__
+#define __L12_COLORMODULATION_CPP__
 
-#include "ColorModulation.h"
+#include "L12.ColorModulation.h"
 
 #define IMAGE_PATH GLOBAL_IMAGE_DIR "images/colors.png"
 
@@ -52,33 +52,35 @@ void ColorModulation::setColorsMap(uint8_t map)
 {
     if(map & (1 << 0))
     {
-        _red += 20;
+        _red += 5;
     }
     if(map & (1 << 1))
     {
-        _green += 20;
+        _green += 5;
     }
     if(map & (1 << 2))
     {
-        _blue += 20;
+        _blue += 5;
     }
     if(map & (1 << 3))
     {
+        _alpha += 5;
     }
     if(map & (1 << 4))
     {
-        _red -= 20;
+        _red -= 5;
     }
     if(map & (1 << 5))
     {
-        _green -= 20;
+        _green -= 5;
     }
     if(map & (1 << 6))
     {
-        _blue -= 20;
+        _blue -= 5;
     }
     if(map & (1 << 7))
     {
+        _alpha -= 5;
     }
 }
 
@@ -89,6 +91,7 @@ void ColorModulation::update()
     }
     else
     {
+        SDL_SetTextureAlphaMod( _texture, _alpha );
         SDL_SetTextureColorMod( _texture, _red, _green, _blue );
         SDL_Rect renderQuad = { _x, _y, _width, _height };
         SDL_RenderCopy( _screen->getRenderer(), _texture, NULL, &renderQuad );

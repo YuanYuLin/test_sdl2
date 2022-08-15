@@ -5,10 +5,12 @@
 #include "GlobalConfig.h"
 #include "Screen.h"
 #include "Background.h"
-#include "Geometry.h"
-#include "ColorKey.h"
-#include "Sprite.h"
-#include "ColorModulation.h"
+#include "L08.Geometry.h"
+#include "L10.ColorKey.h"
+#include "L11.Sprite.h"
+#include "L12.ColorModulation.h"
+#include "L14.AnimatedSprites.h"
+#include "L16.TTFonts.h"
 
 int main(int argc, char** argv)
 {
@@ -55,6 +57,20 @@ int main(int argc, char** argv)
         return 1;
     }
 
+    AnimatedSprites* animatedSprites = AnimatedSprites::create(config, screen);
+    if(!animatedSprites->createSurface())
+    {
+        printf("Error %d\n", __LINE__);
+        return 1;
+    }
+
+    TTFonts* ttFonts = TTFonts::create(config, screen);
+    if(!ttFonts->createSurface())
+    {
+        printf("Error %d\n", __LINE__);
+	return 1;
+    }
+
     bool quit = false;
     SDL_Event e;
     uint8_t colors = 0xFF;
@@ -80,6 +96,9 @@ int main(int argc, char** argv)
                 case SDLK_e:
                     colors |= (1 << 2);
                 break;
+		case SDLK_r:
+                    colors |= (1 << 3);
+		break;
                 case SDLK_a:
                     colors |= (1 << 4);
                 break;
@@ -89,6 +108,9 @@ int main(int argc, char** argv)
                 case SDLK_d:
                     colors |= (1 << 6);
                 break;
+		case SDLK_f:
+                    colors |= (1 << 7);
+		break;
                 default:
                 break;
                 }
@@ -103,6 +125,8 @@ int main(int argc, char** argv)
 	sprite->update();
         colormodulation->setColorsMap(colors);
         colormodulation->update();
+	animatedSprites->update();
+	ttFonts->update();
 
 	screen->update();
     }
@@ -112,6 +136,8 @@ int main(int argc, char** argv)
     delete colorkey;
     delete sprite;
     delete colormodulation;
+    delete animatedSprites;
+    delete ttFonts;
     delete screen;
     delete config;
     SDL_Quit();

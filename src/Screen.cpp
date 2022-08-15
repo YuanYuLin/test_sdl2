@@ -35,7 +35,7 @@ bool Screen::createSurface()
         return false;
     }
 
-    _renderer = SDL_CreateRenderer( _window, -1, SDL_RENDERER_ACCELERATED );
+    _renderer = SDL_CreateRenderer( _window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if(!_renderer)
     {
         return false;
@@ -47,8 +47,17 @@ bool Screen::createSurface()
         return false;
     }
 
-    _surface = SDL_GetWindowSurface( _window );
+    if( TTF_Init() < 0)
+    {
+        return false;
+    }
+    _font = TTF_OpenFont( "fonts/lazy.ttf", 28 );
+    if(!_font)
+    {
+        return false;
+    }
 
+    _surface = SDL_GetWindowSurface( _window );
     return true;
 }
 
@@ -60,6 +69,11 @@ SDL_Surface* Screen::getSurface()
 SDL_Renderer* Screen::getRenderer()
 {
     return _renderer;
+}
+
+TTF_Font* Screen::getFont()
+{
+    return _font;
 }
 
 void Screen::clear()

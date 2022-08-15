@@ -5,6 +5,7 @@
 //#include <sys/types.h>
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include "GlobalConfig.h"
 
 class Screen
@@ -19,6 +20,7 @@ public:
     bool createSurface();
     SDL_Surface* getSurface();
     SDL_Renderer* getRenderer();
+    TTF_Font* getFont();
     void clear();
     void update();
 protected:
@@ -28,6 +30,7 @@ private:
     SDL_Window* _window;
     SDL_Surface* _surface;
     SDL_Renderer* _renderer;
+    TTF_Font *_font;
 };
 
 #endif

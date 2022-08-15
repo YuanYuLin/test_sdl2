@@ -1,5 +1,5 @@
-#ifndef __COLORMODULATION_H__
-#define __COLORMODULATION_H__
+#ifndef __L12_COLORMODULATION_H__
+#define __L12_COLORMODULATION_H__
 
 #include "Base.h"
 
@@ -27,6 +27,7 @@ int _height;
 uint8_t _red;
 uint8_t _green;
 uint8_t _blue;
+uint8_t _alpha;
 };
 
 #endif

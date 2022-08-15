@@ -1,7 +1,7 @@
-#ifndef __COLORKEY_CPP__
-#define __COLORKEY_CPP__
+#ifndef __L10_COLORKEY_CPP__
+#define __L10_COLORKEY_CPP__
 
-#include "ColorKey.h"
+#include "L10.ColorKey.h"
 
 #define IMAGE_PATH GLOBAL_IMAGE_DIR "images/foo.png"
 

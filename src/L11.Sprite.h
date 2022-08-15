@@ -1,5 +1,5 @@
-#ifndef __SPRITE_H__
-#define __SPRITE_H__
+#ifndef __L11_SPRITE_H__
+#define __L11_SPRITE_H__
 
 #include "Base.h"
 

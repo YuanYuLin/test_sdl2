@@ -1,7 +1,7 @@
-#ifndef __GEOMETRY_CPP__
-#define __GEOMETRY_CPP__
+#ifndef __L08_GEOMETRY_CPP__
+#define __L08_GEOMETRY_CPP__
 
-#include "Geometry.h"
+#include "L08.Geometry.h"
 
 Geometry::~Geometry()
 {

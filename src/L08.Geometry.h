@@ -1,5 +1,5 @@
-#ifndef __GEOMETRY_H__
-#define __GEOMETRY_H__
+#ifndef __L08_GEOMETRY_H__
+#define __L08_GEOMETRY_H__
 
 #include "Base.h"
 

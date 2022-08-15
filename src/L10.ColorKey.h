@@ -1,5 +1,5 @@
-#ifndef __COLORKEY_H__
-#define __COLORKEY_H__
+#ifndef __L10_COLORKEY_H__
+#define __L10_COLORKEY_H__
 
 #include "Base.h"
 

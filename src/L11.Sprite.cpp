@@ -1,7 +1,7 @@
-#ifndef __SPRITE_CPP__
-#define __SPRITE_CPP__
+#ifndef __L11_SPRITE_CPP__
+#define __L11_SPRITE_CPP__
 
-#include "Sprite.h"
+#include "L11.Sprite.h"
 
 #define IMAGE_PATH GLOBAL_IMAGE_DIR "images/dots.png"
 
