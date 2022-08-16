@@ -11,6 +11,7 @@
 #include "L12.ColorModulation.h"
 #include "L14.AnimatedSprites.h"
 #include "L16.TTFonts.h"
+#include "L22.Timing.h"
 
 int main(int argc, char** argv)
 {
@@ -66,6 +67,13 @@ int main(int argc, char** argv)
 
     TTFonts* ttFonts = TTFonts::create(config, screen);
     if(!ttFonts->createSurface())
+    {
+        printf("Error %d\n", __LINE__);
+	return 1;
+    }
+
+    Timing* timing = Timing::create(config, screen);
+    if(!timing->createSurface())
     {
         printf("Error %d\n", __LINE__);
 	return 1;
@@ -127,6 +135,7 @@ int main(int argc, char** argv)
         colormodulation->update();
 	animatedSprites->update();
 	ttFonts->update();
+	timing->update();
 
 	screen->update();
     }
@@ -138,6 +147,7 @@ int main(int argc, char** argv)
     delete colormodulation;
     delete animatedSprites;
     delete ttFonts;
+    delete timing;
     delete screen;
     delete config;
     SDL_Quit();

@@ -6,6 +6,11 @@
 Screen::~Screen()
 {
     printf("Destructor %s\n", __func__);
+
+    TTF_CloseFont( _font );
+    _font = NULL;
+    TTF_Quit();
+
     SDL_FreeSurface( _surface );
     _surface = NULL;
 

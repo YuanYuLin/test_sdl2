@@ -19,6 +19,7 @@ SRC += L11.Sprite.cpp
 SRC += L12.ColorModulation.cpp
 SRC += L14.AnimatedSprites.cpp
 SRC += L16.TTFonts.cpp
+SRC += L22.Timing.cpp
 
 SRC += main.cpp
 
