@@ -48,42 +48,6 @@ bool ColorModulation::createHWSurface()
     return true;
 }
 
-void ColorModulation::setColorsMap(uint8_t map)
-{
-    if(map & (1 << 0))
-    {
-        _red += 5;
-    }
-    if(map & (1 << 1))
-    {
-        _green += 5;
-    }
-    if(map & (1 << 2))
-    {
-        _blue += 5;
-    }
-    if(map & (1 << 3))
-    {
-        _alpha += 5;
-    }
-    if(map & (1 << 4))
-    {
-        _red -= 5;
-    }
-    if(map & (1 << 5))
-    {
-        _green -= 5;
-    }
-    if(map & (1 << 6))
-    {
-        _blue -= 5;
-    }
-    if(map & (1 << 7))
-    {
-        _alpha -= 5;
-    }
-}
-
 void ColorModulation::update()
 {
     if(_config->use_sw_render)
@@ -98,4 +62,39 @@ void ColorModulation::update()
     }
 }
 
+void ColorModulation::handleEvent(SDL_Event* e)
+{
+    if(e->type == SDL_KEYDOWN)
+    {
+        switch( e->key.keysym.sym )
+        {
+        case SDLK_q:
+            _red += 5;
+        break;
+        case SDLK_w:
+            _green += 5;
+        break;
+        case SDLK_e:
+            _blue += 5;
+        break;
+        case SDLK_r:
+            _alpha += 5;
+        break;
+        case SDLK_a:
+            _red -= 5;
+        break;
+        case SDLK_s:
+            _green -= 5;
+        break;
+        case SDLK_d:
+            _blue -= 5;
+        break;
+        case SDLK_f:
+            _alpha -= 5;
+        break;
+        default:
+        break;
+        }
+    }
+}
 #endif

@@ -21,8 +21,10 @@ public:
     SDL_Surface* getSurface();
     SDL_Renderer* getRenderer();
     TTF_Font* getFont();
+    void begin();
     void clear();
     void update();
+    void end();
 protected:
 private:
     Screen(GlobalConfig* config);
@@ -31,6 +33,7 @@ private:
     SDL_Surface* _surface;
     SDL_Renderer* _renderer;
     TTF_Font *_font;
+    uint32_t _fps_start_time;
 };
 
 #endif

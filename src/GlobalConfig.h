@@ -11,6 +11,7 @@ public:
     uint16_t screen_width;
     uint16_t screen_height;
     bool use_sw_render;
+    uint8_t fps;
     std::string title;
     GlobalConfig();
     ~GlobalConfig();

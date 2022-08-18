@@ -92,6 +92,21 @@ void Screen::clear()
     }
 }
 
+void Screen::begin()
+{
+    _fps_start_time = SDL_GetTicks();
+}
+
+void Screen::end()
+{
+    float screen_tick_per_frame = 1000 / _config->fps;
+    uint32_t difftime = SDL_GetTicks() - _fps_start_time;
+    if(difftime < screen_tick_per_frame)
+    {
+        SDL_Delay(screen_tick_per_frame - difftime);
+    }
+}
+
 void Screen::update()
 {
     if(_config->use_sw_render)

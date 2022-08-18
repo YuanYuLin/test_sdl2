@@ -10,6 +10,7 @@ GlobalConfig::~GlobalConfig()
 
 GlobalConfig::GlobalConfig()
 {
+    fps = 30;
     screen_width = 1280;
     screen_height = 720;
     use_sw_render = false;

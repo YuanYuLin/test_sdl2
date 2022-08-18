@@ -12,7 +12,7 @@ static ColorModulation* create(GlobalConfig* config, Screen* screen)
     return new ColorModulation(config, screen);
 }
 virtual void update();
-void setColorsMap(uint8_t num);
+void handleEvent(SDL_Event* e);
 
 protected:
 virtual bool createHWSurface();
