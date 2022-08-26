@@ -21,6 +21,7 @@ SRC += L14.AnimatedSprites.cpp
 SRC += L16.TTFonts.cpp
 SRC += L22.Timing.cpp
 SRC += L24.FrameRate.cpp
+SRC += L26.Motion.cpp
 
 SRC += main.cpp
 

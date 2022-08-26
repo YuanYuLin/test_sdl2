@@ -13,6 +13,7 @@
 #include "L16.TTFonts.h"
 #include "L22.Timing.h"
 #include "L24.FrameRate.h"
+#include "L26.Motion.h"
 
 int main(int argc, char** argv)
 {
@@ -87,6 +88,13 @@ int main(int argc, char** argv)
 	return 1;
     }
 
+    Motion* motion = Motion::create(config, screen);
+    if(!motion->createSurface())
+    {
+        printf("Error %d\n", __LINE__);
+	return 1;
+    }
+
     bool quit = false;
     SDL_Event e;
     while( !quit )
@@ -99,6 +107,7 @@ int main(int argc, char** argv)
                 quit = true;
 	    }
             colormodulation->handleEvent(&e);
+	    motion->handleEvent(&e);
 	}
 
 	screen->clear();
@@ -112,6 +121,7 @@ int main(int argc, char** argv)
 	ttFonts->update();
 	timing->update();
 	frameRate->update();
+	motion->update();
 
 	screen->update();
 	screen->end();
@@ -126,6 +136,7 @@ int main(int argc, char** argv)
     delete ttFonts;
     delete timing;
     delete frameRate;
+    delete motion;
     delete screen;
     delete config;
     SDL_Quit();

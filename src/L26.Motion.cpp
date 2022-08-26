@@ -3,7 +3,7 @@
 
 #include "L26.Motion.h"
 
-#define IMAGE_PATH GLOBAL_IMAGE_DIR "images/foos.png"
+#define IMAGE_PATH GLOBAL_IMAGE_DIR "images/dots.png"
 
 Motion::~Motion()
 {
@@ -16,6 +16,8 @@ Motion::~Motion()
 Motion::Motion(GlobalConfig* config, Screen* screen):
         Base(config, screen)
 {
+    _posX = 0;
+    _posY = 0;
     _frame = 0;
 }
 
@@ -53,26 +55,26 @@ bool Motion::createSprites()
 {
     _spriteClips[ 0 ].x = 0;
     _spriteClips[ 0 ].y = 0;
-    _spriteClips[ 0 ].w = 64;
-    _spriteClips[ 0 ].h = 205;
+    _spriteClips[ 0 ].w = 100;
+    _spriteClips[ 0 ].h = 100;
 
     //Set top right sprite
-    _spriteClips[ 1 ].x = 64;
+    _spriteClips[ 1 ].x = 100;
     _spriteClips[ 1 ].y = 0;
-    _spriteClips[ 1 ].w = 64;
-    _spriteClips[ 1 ].h = 205;
+    _spriteClips[ 1 ].w = 100;
+    _spriteClips[ 1 ].h = 100;
 
     //Set bottom left sprite
-    _spriteClips[ 2 ].x = 128;
-    _spriteClips[ 2 ].y = 0;
-    _spriteClips[ 2 ].w = 64;
-    _spriteClips[ 2 ].h = 205;
+    _spriteClips[ 2 ].x = 0;
+    _spriteClips[ 2 ].y = 100;
+    _spriteClips[ 2 ].w = 100;
+    _spriteClips[ 2 ].h = 100;
 
     //Set bottom right sprite
-    _spriteClips[ 3 ].x = 192;
-    _spriteClips[ 3 ].y = 0;
-    _spriteClips[ 3 ].w = 64;
-    _spriteClips[ 3 ].h = 205;
+    _spriteClips[ 3 ].x = 100;
+    _spriteClips[ 3 ].y = 100;
+    _spriteClips[ 3 ].w = 100;
+    _spriteClips[ 3 ].h = 100;
     return true;
 }
 
@@ -95,13 +97,23 @@ void Motion::update()
     {
         int frame = 16;
         SDL_Rect* currentClip = &_spriteClips[ _frame / (frame / 4) ];
-        updateSprite(150, 150, currentClip);
+        updateSprite(_posX, _posY, currentClip);
 	_frame = (_frame + 1) % frame;
     }
 }
 
 void Motion::handleEvent(SDL_Event *e)
 {
+    if( e->type == SDL_KEYDOWN )
+    {
+        switch( e->key.keysym.sym )
+        {
+            case SDLK_UP: _posY -= 1; break;
+            case SDLK_DOWN: _posY += 1; break;
+            case SDLK_LEFT: _posX -= 1; break;
+            case SDLK_RIGHT: _posX += 1; break;
+        }
+    }
 }
 
 #endif
